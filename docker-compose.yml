@@ -1,0 +1,36 @@
+services:
+  # Development service
+  vite-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - vite-network
+    profiles:
+      - development
+
+  # Production service
+  vite-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - vite-network
+    profiles:
+      - production
+
+networks:
+  vite-network:
+    driver: bridge
