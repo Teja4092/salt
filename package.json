@@ -7,11 +7,11 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview --host --port 5173",
-    "docker:dev": "docker-compose --profile development up --build",
-    "docker:prod": "docker-compose --profile production up --build",
+    "docker:dev": "docker compose --profile development up --build",
+    "docker:prod": "docker compose --profile production up --build",
     "docker:dev-build": "docker build -f Dockerfile.dev -t vite-react-dev .",
     "docker:prod-build": "docker build -t vite-react-prod .",
-    "docker:clean": "docker-compose down -v && docker system prune -f"
+    "docker:clean": "docker compose down -v && docker system prune -f"
   },
   "dependencies": {
     "@types/node": "^24.1.0",
